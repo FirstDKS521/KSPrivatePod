@@ -56,7 +56,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
 
   #仓库的路径，tag对应的是版本号
-  s.source       = { :git => "https://git.coding.net/FirstDKS521/KSPrivatePod.git", :branch => "xyz", :tag => s.version.to_s}
+  s.source       = { :git => "https://git.coding.net/FirstDKS521/KSPrivatePod.git", :tag => s.version }
 
   #资源文件路径(**表示匹配所有子目录；*表示匹配所有文件)
   s.source_files  = "KSPrivatePod/*.{h,m}"
