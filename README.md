@@ -56,7 +56,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
 
   #仓库的路径，tag对应的是版本号
-  s.source       = { :git => "https://git.coding.net/FirstDKS521/KSPrivatePod.git", :tag => s.version }
+  s.source       = { :git => "https://git.coding.net/FirstDKS521/KSPrivatePod.git", :branch => "xyz", :tag => s.version.to_s}
 
   #资源文件路径(**表示匹配所有子目录；*表示匹配所有文件)
   s.source_files  = "KSPrivatePod/*.{h,m}"
@@ -146,6 +146,9 @@ pod init
 #iOS支持最低的版本
 platform :ios, '8.0'
 
+#共有的库
+source 'https://github.com/CocoaPods/Specs.git'  
+
 target 'KSPrivateExample' do
 
 #git对应的地址就是你创建私有库的地址
@@ -174,4 +177,13 @@ pod repo push KSPrivatePod KSPrivatePod.podspec
 1、cocoapods的环境搭建问题，git clone速度太慢，所有有个好点儿的VpiN还是很有必要的
 2、出错率最高的就是podspec文件的配置问题，主要就是s.source_filesd的路径问题
 ```
+####注意点：
+在工程中的podfile文件中，一定加入下面的，不然在执行`pod install`时，提示`nable to find a specification for 'Masonry‘`错误
+
+```
+//共有的库
+source 'https://github.com/CocoaPods/Specs.git'
+```
+原因主要是应为共有库、私有库混用时，找不到共有库的地址，如果工程中没有私有库，则不需要添加上面的代码，执行`pod install`依然会成功
+
 参考文章：[文章一](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章二](https://blog.csdn.net/DonnyDN/article/details/79823566)
