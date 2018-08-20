@@ -159,12 +159,14 @@ end
 6.3、然后执行`pod install`，此时工程中就出现了一个`.xcworkspace`文件，到此，私有库已完成创建
 
 ####7、版本更新维护步骤
+
 7.1、将更新的好的私有库放入到创建的私有文件夹中，然后更新`.podspec`文件的`s.version = '0.0.2'`
+
 7.2、然后cd到私有文件夹中，执行如下命令：
 
 ```
-pod add .
-pod commit -m '更新版本0.0.2'
+git add .
+git commit -m '更新版本0.0.2'
 git push origin master
 git tag '0.0.2'
 git push --tags
