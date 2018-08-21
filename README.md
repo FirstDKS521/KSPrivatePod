@@ -188,4 +188,33 @@ source 'https://github.com/CocoaPods/Specs.git'
 ```
 原因主要是应为共有库、私有库混用时，找不到共有库的地址，如果工程中没有私有库，则不需要添加上面的代码，执行`pod install`依然会成功
 
-参考文章：[文章一](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章二](https://blog.csdn.net/DonnyDN/article/details/79823566)
+####如果私有库引用了别的私有库，则需要做如下处理
+
+在私有库中引用私有库，即在`Podspec`文件中依赖(dependency)`私有库` 这种情况就比较麻烦一点，因为毕竟Podspec文件中并没有指明私有仓库地址的地方。那么肯定就不在Podspec文件里面指明私有仓库的地方。而是在验证和上传私有库的时候进行指明。即在下面这两条命令中进行指明：
+
+如下是在`KSThirdController`私有库中引入了`KSSecondController`私有库
+
+```
+#验证库时使用如下命令
+pod lib lint --allow-warnings KSThirdController.podspec --sources=https://gitee.com/FirstDKS521/KSSecondController.git
+#上传私有库时使用如下名令
+pod repo push KSThirdController KSThirdController.podspec --sources=https://gitee.com/FirstDKS521/KSSecondController.git
+```
+在工程中使用`KSThirdController`私有库时，也要记得同时引入`KSSecondController`私有库，如下：
+
+```
+platform :ios, '8.0'
+
+source 'https://github.com/CocoaPods/Specs.git'  
+source 'https://gitee.com/FirstDKS521/KSSecondController.git'
+source 'https://gitee.com/FirstDKS521/KSThirdController.git'
+
+target 'KSThirdDemo' do
+
+pod "KSSecondController"
+pod "KSThirdController"
+
+end
+```
+
+参考文章：[文章一](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章二](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章三](http://www.pluto-y.com/cocoapod-private-pods-and-module-manager)
