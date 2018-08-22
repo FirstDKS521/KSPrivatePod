@@ -69,26 +69,8 @@ Pod::Spec.new do |s|
 
 end
 ```
-####3、提交刚刚更改的所有内容
-3.1、在刚刚clone的文件夹中，在终端执行如下命令：
 
-```
-//第一步：将更改的添加至暂存区不要忘了后面的.
-git add .
-//第二步：提交文件
-git commit -m 'first commit'
-//第三步：push文件到仓库
-git push origin master
-```
-3.2、给刚刚提交的文件打tag标签
-
-```
-//第一步：tag标签.podspece文件中s.version保持一致
-git tag '0.0.1'
-//第二步：推送标签
-git push --tags
-```
-####4、检验.podspec文件是否有错
+####3、检验.podspec文件是否有错
 在终端执行如下命令：
 
 ```
@@ -112,6 +94,26 @@ pod lib lint --allow-warnings
 如果没有错误，则终端输出如果下结果：
 
 ![image.png](https://upload-images.jianshu.io/upload_images/1840399-2be096da5e7f119d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+####4、提交刚刚更改的所有内容
+4.1、在刚刚clone的文件夹中，在终端执行如下命令：
+
+```
+//第一步：将更改的添加至暂存区不要忘了后面的.
+git add .
+//第二步：提交文件
+git commit -m 'first commit'
+//第三步：push文件到仓库
+git push origin master
+```
+4.2、给刚刚提交的文件打tag标签
+
+```
+//第一步：tag标签.podspece文件中s.version保持一致
+git tag '0.0.1'
+//第二步：推送标签
+git push --tags
+```
 
 ####5、创建私有的索引库Spec Repo
 5.1、终端执行如下命令
