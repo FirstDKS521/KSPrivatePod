@@ -1,11 +1,11 @@
-#iOS开发：创建私有Pod库的步骤（图文）
+# iOS开发：创建私有Pod库的步骤（图文）
 >开发中，大部分的三方库我们都是通过Cocoapods来管理的，没有别的原因，就是应为管理方便；
 
 >随着项目的扩展，有些功能模块儿可以单独拉出去，封装成framework或者是以源代码的形式管理；也可以让别人通过Cocoapods去拉取我们封装的代码，想想有没有很开森😂
 
 Pod库分私有库、公有库，意思如同名字一样，以下我将说的是私有库的创建，如果需要参考，还请仔细阅读~
 
-####1、创建私有代码仓库
+#### 1、创建私有代码仓库
 
 1.1、由于GitHub创建私有仓库是收费的，所以我此处使用 [coding](https://coding.net/)，也可以使用码云或者其他平台
 
@@ -20,7 +20,7 @@ git clone https://git.coding.net/FirstDKS521/KSPrivatePod.git
 
 ![文件目录.png](https://upload-images.jianshu.io/upload_images/1840399-26500adadb3a1cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####2、在刚clone的文件下，生成.podspec文件
+#### 2、在刚clone的文件下，生成.podspec文件
 
 2.1、在终端执行命令`pod spec create 私有库名字`
 
@@ -70,7 +70,7 @@ Pod::Spec.new do |s|
 end
 ```
 
-####3、检验.podspec文件是否有错
+#### 3、检验.podspec文件是否有错
 在终端执行如下命令：
 
 ```
@@ -95,7 +95,7 @@ pod lib lint --allow-warnings
 
 ![image.png](https://upload-images.jianshu.io/upload_images/1840399-2be096da5e7f119d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####4、提交刚刚更改的所有内容
+#### 4、提交刚刚更改的所有内容
 4.1、在刚刚clone的文件夹中，在终端执行如下命令：
 
 ```
@@ -115,7 +115,7 @@ git tag '0.0.1'
 git push --tags
 ```
 
-####5、创建私有的索引库Spec Repo
+#### 5、创建私有的索引库Spec Repo
 5.1、终端执行如下命令
 
 ```
@@ -134,7 +134,7 @@ open ~/.cocoapods/repos/
 ```
 pod repo
 ```
-####6、使用刚刚创建的私有库
+#### 6、使用刚刚创建的私有库
 6.1、在桌面创建一个KSPrivateExample工程，然后cd到这个工程中执行
 
 ```
@@ -160,7 +160,7 @@ end
 ```
 6.3、然后执行`pod install`，此时工程中就出现了一个`.xcworkspace`文件，到此，私有库已完成创建
 
-####7、版本更新维护步骤
+#### 7、版本更新维护步骤
 
 7.1、将更新的好的私有库放入到创建的私有文件夹中，然后更新`.podspec`文件的`s.version = '0.0.2'`
 
@@ -181,7 +181,7 @@ pod repo push KSPrivatePod KSPrivatePod.podspec
 1、cocoapods的环境搭建问题，git clone速度太慢，所有有个好点儿的VpiN还是很有必要的
 2、出错率最高的就是podspec文件的配置问题，主要就是s.source_filesd的路径问题
 ```
-####注意点：
+#### 注意点：
 在工程中的podfile文件中，一定加入下面的，不然在执行`pod install`时，提示`nable to find a specification for 'Masonry‘`错误
 
 ```
