@@ -226,4 +226,4 @@ pod "KSThirdController"
 end
 ```
 
-参考文章：[文章一](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章二](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章三](http://www.pluto-y.com/cocoapod-private-pods-and-module-manager)、[文章三](https://juejin.cn/post/7031191276493996039)
+参考文章：[文章一](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章二](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章三](http://www.pluto-y.com/cocoapod-private-pods-and-module-manager)、[文章四](https://juejin.cn/post/7031191276493996039)
