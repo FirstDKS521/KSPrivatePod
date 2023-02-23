@@ -27,6 +27,13 @@ git clone https://git.coding.net/FirstDKS521/KSPrivatePod.git
 ```
 pod spec create KSPrivatePod
 ```
+或者使用CocoaPods创建
+```
+//直接创建
+pod lib create PodName
+//指定clone url
+pod lib create PodName --template-url='指定clone url'
+```
 创建成功终端会提示`Specification created at KSPrivatePod.podspec`，此时文件夹中会出现`KSPrivatePod.podspec`文件
 
 2.2、打开这个.podspec文件，最终的编辑效果如下：
@@ -190,7 +197,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 ```
 原因主要是应为共有库、私有库混用时，找不到共有库的地址，如果工程中没有私有库，则不需要添加上面的代码，执行`pod install`依然会成功
 
-####如果私有库引用了别的私有库，则需要做如下处理
+#### 如果私有库引用了别的私有库，则需要做如下处理
 
 在私有库中引用私有库，即在`Podspec`文件中依赖(dependency)`私有库` 这种情况就比较麻烦一点，因为毕竟Podspec文件中并没有指明私有仓库地址的地方。那么肯定就不在Podspec文件里面指明私有仓库的地方。而是在验证和上传私有库的时候进行指明。即在下面这两条命令中进行指明：
 
@@ -219,4 +226,4 @@ pod "KSThirdController"
 end
 ```
 
-参考文章：[文章一](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章二](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章三](http://www.pluto-y.com/cocoapod-private-pods-and-module-manager)
+参考文章：[文章一](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章二](https://blog.csdn.net/DonnyDN/article/details/79823566)、[文章三](http://www.pluto-y.com/cocoapod-private-pods-and-module-manager)、[文章三](https://juejin.cn/post/7031191276493996039)
